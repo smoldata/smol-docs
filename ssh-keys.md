@@ -119,7 +119,7 @@ Before we continue, copy the contents of your public key to the clipboard. We're
 cat ~/.ssh/id_rsa.pub | pbcopy
 ```
 
-The first time you login to a new server you will use your passphrase, and then once your logged in you'll want to set up your public key to use for subsequent logins. It makes it a lot easier to use SSH, since you don't have to type passphrases in all the time.
+The first time you login to a new server you will use your passphrase, and then once you're logged in you'll want to set up your public key to use for subsequent logins. Public key logins make it a lot easier to use SSH, since you don't have to type passphrases in all the time.
 
 Let's login to the server called `pinto` using the settings we used in the `.ssh/config` file.
 
