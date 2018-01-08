@@ -2,7 +2,7 @@
 
 _Note: this guide is written for macOS, but we do intend to support other platforms!_
 
-SSH is one of the most important network utilities you can learn. It is like the "copper pipe" of network plumbing. The `ssh` terminal command lets you easily and securely login to remote servers, but SSH is also a transport used by `git` and `rsync`.
+SSH is one of the most important network utilities you can learn. It is like the copper pipe of network plumbing. The `ssh` terminal command lets you easily and securely login to remote servers, but SSH is also a transport used by `git` and `rsync`.
 
 This document is meant to help new users generate SSH keys, or to configure an existing key pair to work with Smol Data servers, and to commit to our GitHub repos. We will be using the command line terminal, so open up Terminal.app (located in Applications/Utilities).
 
