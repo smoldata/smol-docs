@@ -66,7 +66,7 @@ Here are some of the files you may find in the `.ssh` folder:
 
 ## Private key vs. public key
 
-Each SSH key pair has a _private_ and _public_ file. The private key is the one you need to keep secret, it's basically like a passphrase stored in a file. You never want to share this file with anyone, or upload it to the Internet. The public key is _not_ secret, you will need to share it with GitHub and store it on each server you want to login to.
+Each SSH key pair has a _private_ and _public_ file (the public one has a `.pub` suffix). The private key is the one you need to keep secret, it's basically like a passphrase stored in a file. You never want to share this file with anyone, or upload it to the Internet. The public key is _not_ secret, you will need to share it with GitHub and store it on each server you want to login to.
 
 The first time you login to a new server you can use your passphrase, and then you'll want to set up your public key to use for subsequent logins. It makes it a lot easier to use SSH, since you don't have to type passwords in all the time.
 
