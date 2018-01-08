@@ -47,7 +47,7 @@ Let's create a new pair of SSH keys.
 ssh-keygen
 ```
 
-Accept the default name `id_rsa`. You don't _have_ to set a password on the key, but if you do it will mean anyone who gains access to the files won't be able to use your key pair to login as you.
+Accept the default name `id_rsa`. You don't _have_ to set a passphrase on the key, but if you do it will mean anyone who gains access to the files won't be able to use your key pair to login as you. ("Passphrase" means the same thing as "password," in case you aren't accustomed to seeing it written it that way.)
 
 When you finish, you should see two new files in the `.ssh` folder: `id_rsa` and `id_rsa.pub`.
 
