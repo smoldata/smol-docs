@@ -66,13 +66,11 @@ Here are some of the files you may find in the `.ssh` folder:
 
 ## Private key vs. public key
 
-Each SSH key pair has a _private_ and _public_ file (the public one has a `.pub` suffix). The private key is the one you need to keep secret, it's basically like a passphrase stored in a file. You never want to share this file with anyone, or upload it to the Internet. The public key is _not_ secret, you will need to share it with GitHub and store it on each server you want to login to.
-
-The first time you login to a new server you can use your passphrase, and then you'll want to set up your public key to use for subsequent logins. It makes it a lot easier to use SSH, since you don't have to type passwords in all the time.
+Each SSH key pair has a _private_ and _public_ file (the public one has a `.pub` suffix). The **private key** is the one you need to keep secret, it's basically like a passphrase stored in a file. You never want to share this file with anyone, or upload it to the Internet. The **public key** is _not_ secret, you will need to share it with GitHub and store it on each server you want to login to.
 
 ## File permissions
 
-It's important that file permissions are set up properly, or your keys won't work properly. The `.ssh` folder itself should have `700` permissions (you have full access, nobody else gets any access) and the private key should have `600` permissions (you have read/write access, nobody else gets any access).
+It's important that file permissions are set up properly, or your keys won't work. The `.ssh` folder itself should have `700` permissions (you have full access, nobody else gets any access) and the private key should have `600` permissions (you have read/write access, nobody else gets any access).
 
 ```
 chmod 700 ~/.ssh
@@ -100,7 +98,7 @@ Now I can easily login to `pinto.smoldata.org` by typing the command `ssh pinto`
 * `Host pinto` establishes a new set of rules under the shortcut name `pinto`.
 * `Hostname pinto.smoldata.org` is the full hostname used to login.
 * `User dphiffer` sets which username to use to login to the server (you will want to change this to your own username).
-* `IdentityFile ~/.ssh/id_rsa` uses your private key instead of requiring a password. If you set a password when you generated the private key, you'll need to enter that password to use it. The macOS keychain app will offer to remember that private key password, which means you won't need to enter it each time you login.
+* `IdentityFile ~/.ssh/id_rsa` assigns your private key as the login credential instead of requiring a passphrase.
 * `ForwardAgent yes` sets up SSH key forwarding, which makes your private key usable from an SSH session on the server.
 
 ## Set up SSH key forwarding
@@ -111,7 +109,7 @@ That last configuration is important for being able to commit your work to GitHu
 ssh-add -K ~/.ssh/id_rsa
 ```
 
-For some versions of macOS this command needs to be run every time you reboot your computer. If you find that you mysteriously can't commit code to GitHub on the server, you may just need to re-run the `ssh-add` from the macOS terminal (*not* from the server's SSH session).
+For some versions of macOS this command needs to be run every time you reboot your computer. If you find that you mysteriously can't commit code to GitHub from the server, you may just need to re-run the `ssh-add` from the macOS terminal (*not* from the server's SSH session).
 
 ## Login to the server
 
@@ -121,13 +119,15 @@ Before we continue, copy the contents of your public key to the clipboard. We're
 cat ~/.ssh/id_rsa.pub | pbcopy
 ```
 
+The first time you login to a new server you will use your passphrase, and then once your logged in you'll want to set up your public key to use for subsequent logins. It makes it a lot easier to use SSH, since you don't have to type passphrases in all the time.
+
 Let's login to the server called `pinto` using the settings we used in the `.ssh/config` file.
 
 ```
 ssh pinto
 ```
 
-The first time you login, you will get prompted for your password. This is the _server password_ and is separate for the password you use in macOS or to unlock your private key.
+The first time you login you will get prompted for your passphrase. This is the _server passphrase_ and is separate from the one used for macOS or to unlock your private key.
 
 You should see a welcome message like this:
 
@@ -184,9 +184,9 @@ Now you should see your usual macOS prompt. Login to the server again with SSH.
 ssh pinto
 ```
 
-You should login to the server without needing to type your password. Or, if you set a password when you generated the private key, type that password now. (It's fine to let the macOS keychain remember your private key login.)
+You should login to the server without needing to type your passphrase. Or, if you set a passphrase when you generated the private key, type that in now. (It's fine to let the macOS keychain remember your private key login.)
 
-If it _doesn't_ work, you may want to try signing in with the "verbose" flag set, which will give you some additional debug info.
+If it _doesn't work_, you may want to try signing in with the "verbose" flag set, which will give you some additional debug info.
 
 ```
 ssh -v pinto
