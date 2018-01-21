@@ -91,6 +91,7 @@ Host pinto
 	User dphiffer
 	IdentityFile ~/.ssh/id_rsa
 	ForwardAgent yes
+	IdentitiesOnly yes
 ```
 
 Now I can easily login to `pinto.smoldata.org` by typing the command `ssh pinto`. Here is what each line does:
@@ -100,6 +101,7 @@ Now I can easily login to `pinto.smoldata.org` by typing the command `ssh pinto`
 * `User dphiffer` sets which username to use to login to the server (you will want to change this to your own username).
 * `IdentityFile ~/.ssh/id_rsa` assigns your private key as the login credential instead of requiring a passphrase.
 * `ForwardAgent yes` sets up SSH key forwarding, which makes your private key usable from an SSH session on the server.
+* `IdentitiesOnly yes` sets SSH to not send other keys, which could result in `Too many authentication failures` errors.
 
 ## Set up SSH key forwarding
 
